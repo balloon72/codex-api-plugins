@@ -1,0 +1,46 @@
+{
+  "name": "github-gh",
+  "version": "0.1.0",
+  "description": "Inspect repositories, triage pull requests and issues, debug CI, and publish changes through a local GitHub CLI workflow that works without ChatGPT app login.",
+  "author": {
+    "name": "balloon72",
+    "email": "balloon72@users.noreply.github.com",
+    "url": "https://github.com/balloon72"
+  },
+  "homepage": "https://github.com/balloon72/codex-api-plugins",
+  "repository": "https://github.com/balloon72/codex-api-plugins",
+  "license": "Apache-2.0",
+  "keywords": [
+    "github",
+    "gh",
+    "pull-request",
+    "code-review",
+    "issues",
+    "ci",
+    "actions",
+    "api-mode"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "GitHub (gh)",
+    "shortDescription": "Triage PRs, issues, CI, and publish flows with GitHub CLI",
+    "longDescription": "Use GitHub (gh) to inspect repositories, review pull requests, address feedback, debug failing Actions checks, and prepare code changes for review through a local GitHub CLI workflow that works in API mode without ChatGPT app login.",
+    "developerName": "balloon72",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/balloon72/codex-api-plugins",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "Inspect PRs, triage issues, debug failing checks, and prepare code changes for review with gh"
+    ],
+    "composerIcon": "./assets/github-small.svg",
+    "logo": "./assets/github.png",
+    "screenshots": [],
+    "brandColor": "#24292F"
+  }
+}

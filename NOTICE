@@ -1,0 +1,13 @@
+This repository includes a modified derivative of the GitHub Codex plugin
+example distributed in OpenAI's plugin example collection.
+
+Original upstream source:
+- https://github.com/openai/plugins
+
+Derivative work in this repository:
+- adapts the GitHub plugin to Codex API mode
+- replaces ChatGPT app login dependency with local GitHub CLI (`gh`) workflows
+- adds retry and fallback behavior for unstable GitHub API transport scenarios
+- adds repository-level marketplace metadata, installation scripts, and public docs
+
+Retained upstream and derived files are distributed under the Apache License 2.0.

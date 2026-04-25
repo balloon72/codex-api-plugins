@@ -1,0 +1,20 @@
+{
+  "name": "codex-api-plugins",
+  "interface": {
+    "displayName": "Codex API Plugins"
+  },
+  "plugins": [
+    {
+      "name": "github-gh",
+      "source": {
+        "source": "local",
+        "path": "./plugins/github-gh"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
+    }
+  ]
+}
