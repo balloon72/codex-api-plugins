@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="GitLab Pipeline">
+  <defs>
+    <linearGradient id="gitlabPipelineSmallBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2533" />
+      <stop offset="100%" stop-color="#11151f" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#gitlabPipelineSmallBg)" />
+  <path d="M15 38 24 13h16l9 25-17 13Z" fill="#FC6D26" />
+  <path d="M24 13 20 26l12 25L15 38Z" fill="#E24329" />
+  <path d="M40 13 44 26 32 51l17-13Z" fill="#FC6D26" opacity=".82" />
+  <path d="M20 26h24L32 51Z" fill="#FCA326" />
+</svg>

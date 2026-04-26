@@ -5,7 +5,7 @@
 Check these items in order:
 
 1. Confirm the marketplace is registered in `~/.codex/config.toml`
-2. Confirm `github-gh@codex-api-plugins` is enabled in the same file
+2. Confirm `github-gh@codex-api-plugins` and `gitlab-mcp@codex-api-plugins` are enabled in the same file
 3. Confirm the repository path in the marketplace block points to your local clone
 4. Fully restart Codex Desktop
 
@@ -74,6 +74,53 @@ gh auth status
 ```
 
 If needed, switch accounts or re-authenticate before using the plugin.
+
+## `gitlab-mcp` reports `invalid_token`
+
+Your GitLab token is missing, expired, or not the token value that the current Codex session inherited.
+
+Check these items:
+
+1. Confirm `GITLAB_PERSONAL_ACCESS_TOKEN` is set at the user or machine scope.
+2. Confirm the token has not expired in GitLab.
+3. Restart Codex Desktop after changing the user environment variable so new sessions inherit the new token.
+
+## `gitlab-mcp` cannot connect to the server
+
+The most common cause is a bad `GITLAB_API_URL`.
+
+Use this format:
+
+```powershell
+[Environment]::SetEnvironmentVariable('GITLAB_API_URL', 'https://gitlab.example.com/api/v4', 'User')
+```
+
+Checks:
+
+- use the GitLab base URL for your instance
+- include `/api/v4`
+- avoid the project or merge request web URL here
+
+## `gitlab-mcp` can read but cannot write
+
+This usually means the token only has `read_api` scope.
+
+For write-back workflows such as draft review notes or published feedback, create a token with:
+
+- `api`
+
+If you want read-only inspection only, `read_api` is enough.
+
+## GitLab review feedback does not appear in the MR
+
+Check whether the workflow only drafted notes and never published them.
+
+The plugin defaults to draft-first review:
+
+- create draft notes first
+- publish only when explicitly requested
+
+If the token is read-only, draft creation may fail and the plugin should fall back to chat-only feedback.
 
 ## How to validate the repo after changes
 

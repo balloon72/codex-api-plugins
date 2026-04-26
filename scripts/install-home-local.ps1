@@ -22,7 +22,7 @@ function Upsert-TomlBlock {
     )
 
     $escapedHeader = [regex]::Escape($Header)
-    $pattern = "(?ms)^\Q$Header\E\s*`r?`n.*?(?=^\[[^\]]+\]|`z)"
+    $pattern = "(?ms)^$escapedHeader\s*`r?`n.*?(?=^\[[^\]]+\]|`z)"
     if ([regex]::IsMatch($Content, $pattern)) {
         return [regex]::Replace($Content, $pattern, $Block.TrimEnd() + "`r`n`r`n")
     }
@@ -58,9 +58,15 @@ $pluginBlock = @'
 enabled = true
 '@
 
+$gitlabPluginBlock = @'
+[plugins."gitlab-mcp@codex-api-plugins"]
+enabled = true
+'@
+
 $content = Get-Content -LiteralPath $configPath -Raw
 $content = Upsert-TomlBlock -Content $content -Header '[marketplaces.codex-api-plugins]' -Block $marketplaceBlock
 $content = Upsert-TomlBlock -Content $content -Header '[plugins."github-gh@codex-api-plugins"]' -Block $pluginBlock
+$content = Upsert-TomlBlock -Content $content -Header '[plugins."gitlab-mcp@codex-api-plugins"]' -Block $gitlabPluginBlock
 
 Set-Content -LiteralPath $configPath -Value $content -Encoding utf8
 
@@ -68,4 +74,5 @@ Write-Host "Updated $configPath"
 Write-Host "Backup created at $backupPath"
 Write-Host "Marketplace source: $sourcePath"
 Write-Host "Enabled plugin: github-gh@codex-api-plugins"
+Write-Host "Enabled plugin: gitlab-mcp@codex-api-plugins"
 Write-Host "Restart Codex Desktop to refresh the plugin list."

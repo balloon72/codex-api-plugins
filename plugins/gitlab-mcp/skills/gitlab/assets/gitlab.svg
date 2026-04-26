@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="GitLab">
+  <defs>
+    <linearGradient id="gitlabSkillBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#202736" />
+      <stop offset="100%" stop-color="#0f1320" />
+    </linearGradient>
+    <linearGradient id="gitlabSkillGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fc6d26" />
+      <stop offset="100%" stop-color="#fca326" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="104" fill="url(#gitlabSkillBg)" />
+  <circle cx="408" cy="104" r="56" fill="#fc6d26" opacity=".12" />
+  <circle cx="108" cy="392" r="88" fill="#e24329" opacity=".1" />
+  <path d="M120 300 188 112h136l68 188-136 104Z" fill="url(#gitlabSkillGlow)" />
+  <path d="M188 112 156 212l100 192L120 300Z" fill="#e24329" />
+  <path d="M324 112 356 212 256 404l136-104Z" fill="#fc6d26" opacity=".85" />
+  <path d="M156 212h200L256 404Z" fill="#fca326" />
+  <path d="M168 438h176" stroke="#ffffff" stroke-linecap="round" stroke-opacity=".25" stroke-width="18" />
+</svg>

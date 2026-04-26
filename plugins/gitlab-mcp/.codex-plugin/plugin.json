@@ -1,0 +1,48 @@
+{
+  "name": "gitlab-mcp",
+  "version": "0.1.0",
+  "description": "Inspect GitLab merge requests, issues, pipelines, and wiki content, then write review feedback and draft notes through the @zereight/mcp-gitlab server.",
+  "author": {
+    "name": "balloon72",
+    "email": "balloon72@users.noreply.github.com",
+    "url": "https://github.com/balloon72"
+  },
+  "homepage": "https://github.com/balloon72/codex-api-plugins",
+  "repository": "https://github.com/balloon72/codex-api-plugins",
+  "license": "Apache-2.0",
+  "keywords": [
+    "gitlab",
+    "merge-request",
+    "code-review",
+    "pipeline",
+    "self-hosted",
+    "mcp",
+    "api-mode"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "GitLab MCP",
+    "shortDescription": "Review merge requests, draft feedback, and inspect pipelines through GitLab MCP",
+    "longDescription": "Use GitLab MCP to inspect merge requests, diffs, discussions, issues, wiki pages, and pipelines in GitLab, then draft or publish review feedback through the @zereight/mcp-gitlab server without relying on ChatGPT app login.",
+    "developerName": "balloon72",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/balloon72/codex-api-plugins",
+    "privacyPolicyURL": "https://about.gitlab.com/privacy/",
+    "termsOfServiceURL": "https://about.gitlab.com/terms/",
+    "defaultPrompt": [
+      "Inspect this GitLab merge request, summarize the risk, and draft review notes before publishing them",
+      "Check the latest GitLab pipeline and explain why the failed jobs broke",
+      "Look up a GitLab issue or wiki page and tell me what needs attention"
+    ],
+    "brandColor": "#FC6D26",
+    "composerIcon": "./assets/gitlab-small.svg",
+    "logo": "./assets/gitlab.svg",
+    "screenshots": []
+  }
+}
