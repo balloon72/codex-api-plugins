@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pipeline"
+  short_description: "Inspect GitLab pipelines and failed jobs"
+  icon_small: "./assets/gitlab-small.svg"
+  icon_large: "./assets/gitlab.svg"
+  default_prompt: "Use $gitlab-pipeline to inspect the latest GitLab pipeline, summarize the failed jobs, and explain the most likely root cause."

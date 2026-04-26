@@ -2,7 +2,7 @@
 
 `codex-api-plugins` is a public collection of Codex plugins designed for **Codex API mode**.
 
-The repository starts with one productionized plugin, `github-gh`, and is structured to grow into a multi-plugin collection over time.
+The repository currently ships two productionized plugins and is structured to grow into a multi-plugin collection over time.
 
 ## Why this repository exists
 
@@ -20,6 +20,7 @@ This repository focuses on a different target:
 | Plugin | Status | What it does | Notes |
 | --- | --- | --- | --- |
 | `github-gh` | `v0.1.0` | Repository triage, PR review, CI debugging, and draft PR workflows through GitHub CLI | Built for Codex API mode without ChatGPT app login |
+| `gitlab-mcp` | `v0.1.0` | Merge request review, draft feedback, issue and wiki lookup, and pipeline inspection through `@zereight/mcp-gitlab` | Supports self-hosted GitLab through `GITLAB_API_URL` and PAT auth |
 
 ## Recommended installation
 
@@ -33,16 +34,18 @@ The recommended path is **home-local installation**.
    ```
 
 3. Restart Codex Desktop.
-4. Open the plugin picker and look for `GitHub (gh)`.
+4. Open the plugin picker and look for `GitHub (gh)` and `GitLab MCP`.
+5. Set the GitLab environment variables before using `gitlab-mcp`.
 
 Detailed steps are in [docs/install.md](docs/install.md).
 
 ## Usage
 
-The `github-gh` plugin is invoked through the plugin mention:
+The plugins are invoked through plugin mentions:
 
 ```text
 [@github-gh](plugin://github-gh@codex-api-plugins)
+[@gitlab-mcp](plugin://gitlab-mcp@codex-api-plugins)
 ```
 
 Example prompts:
@@ -51,8 +54,10 @@ Example prompts:
 - `[@github-gh](plugin://github-gh@codex-api-plugins) review the latest unresolved comments on PR 123`
 - `[@github-gh](plugin://github-gh@codex-api-plugins) debug the failing checks on this branch`
 - `[@github-gh](plugin://github-gh@codex-api-plugins) commit these changes, push, and open a draft PR`
+- `[@gitlab-mcp](plugin://gitlab-mcp@codex-api-plugins) inspect this merge request URL and draft review feedback`
+- `[@gitlab-mcp](plugin://gitlab-mcp@codex-api-plugins) check the latest failed pipeline jobs on this MR`
 
-Detailed usage is in [docs/usage/github-gh.md](docs/usage/github-gh.md).
+Detailed usage is in [docs/usage/github-gh.md](docs/usage/github-gh.md) and [docs/usage/gitlab-mcp.md](docs/usage/gitlab-mcp.md).
 
 ## Repository layout
 
@@ -61,7 +66,8 @@ Detailed usage is in [docs/usage/github-gh.md](docs/usage/github-gh.md).
 ├── .agents/plugins/marketplace.json
 ├── docs/
 ├── plugins/
-│   └── github-gh/
+│   ├── github-gh/
+│   └── gitlab-mcp/
 └── scripts/
 ```
 
@@ -79,6 +85,12 @@ This repository already bakes in the current workaround:
 - scripts inject `GODEBUG=http2client=0`
 - retry logic is enabled for transient `EOF` / timeout failures
 - comment-fetch workflows can fall back when GraphQL is unstable
+
+`gitlab-mcp` depends on local Node.js and a valid GitLab Personal Access Token exposed through environment variables:
+
+- `GITLAB_PERSONAL_ACCESS_TOKEN`
+- `GITLAB_API_URL` ending in `/api/v4`
+- `api` scope for write-back review flows, or `read_api` for read-only inspection
 
 Troubleshooting guidance lives in [docs/troubleshooting.md](docs/troubleshooting.md).
 
